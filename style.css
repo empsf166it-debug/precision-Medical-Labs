@@ -1,6 +1,9 @@
-﻿/* Base Styles & Utilities */
-html {
+/* Base Styles & Utilities */
+html, body {
     scroll-padding-top: 5rem;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Custom Scrollbar */
