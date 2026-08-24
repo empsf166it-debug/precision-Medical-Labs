@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Medical Labs - Advanced Diagnostics</title>
+    <meta name="description" content="Precision Medical Labs provides accurate, reliable, and technology-driven diagnostic testing for better healthcare decisions.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ðŸ§¬</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gray: {
+                            50: '#FAF5FF',
+                            100: '#F7F5F8',
+                            200: '#EDE9FE',
+                            300: '#DDD6E5',
+                            400: '#B7AABD',
+                            500: '#6B6472',
+                            600: '#6B6472',
+                            700: '#432550',
+                            800: '#24132F',
+                            900: '#292132',
+                            950: '#160D1D',
+                        },
+                        medical: {
+                            plum: '#4C1D5F',
+                            purple: '#6D28A8',
+                            violet: '#7C3AED',
+                            lavender: '#F3E8FF',
+                            accent: '#8B5CF6',
+                            orchid: '#A855F7',
+                            magenta: '#C084FC',
+                            bgdark: '#160D1D',
+                            carddark: '#24132F',
+                            surfacedark: '#301A3D'
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+                        'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white dark:bg-medical-bgdark text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300 antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 bg-white/80 dark:bg-medical-bgdark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group" aria-label="Home" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                    <div class="w-10 h-10 rounded-lg bg-medical-purple flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-medical-plum to-medical-purple dark:from-white dark:to-medical-lavender">Precision Labs</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+                    <a href="#home" class="nav-link text-sm font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-colors">About</a>
+                    <a href="#services" class="nav-link text-sm font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-colors">Tests & Services</a>
+                    <a href="#technology" class="nav-link text-sm font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-colors">Technology</a>
+                    <a href="#why-us" class="nav-link text-sm font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-colors">Why Us</a>
+                    <a href="#contact" class="nav-link text-sm font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-purple-400"></i>
+                    </button>
+
+                    <a href="#contact" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-medical-purple text-white font-medium hover:bg-purple-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                        Book a Test
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Open menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Overlay) -->
+        <div id="mobile-menu" class="fixed inset-0 z-50 bg-white dark:bg-medical-bgdark transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col h-screen">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-800">
+                <span class="font-bold text-xl">Menu</span>
+                <button id="mobile-menu-close" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col p-6 gap-6 flex-grow overflow-y-auto">
+                <a href="#home" class="mobile-nav-link text-lg font-medium">Home</a>
+                <a href="#about" class="mobile-nav-link text-lg font-medium">About</a>
+                <a href="#services" class="mobile-nav-link text-lg font-medium">Tests & Services</a>
+                <a href="#technology" class="mobile-nav-link text-lg font-medium">Technology</a>
+                <a href="#why-us" class="mobile-nav-link text-lg font-medium">Why Us</a>
+                <a href="#contact" class="mobile-nav-link text-lg font-medium">Contact</a>
+                
+                <div class="mt-auto pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-4">
+                    <a href="#contact" class="mobile-nav-link flex items-center justify-center w-full px-6 py-3 rounded-full bg-medical-purple text-white font-medium">
+                        Book a Test
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="home" class="relative pt-12 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-b from-medical-lavender/30 to-white dark:from-medical-carddark dark:to-medical-plum">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-medical-purple/10 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-medical-violet/10 blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Content -->
+                    <div class="text-left" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-900/30 text-medical-purple dark:text-medical-lavender text-sm font-semibold mb-6 shadow-sm border border-purple-100 dark:border-purple-800">
+                            <span class="relative flex h-3 w-3">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-medical-purple opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-medical-purple"></span>
+                            </span>
+                            Advanced Diagnostics. Accurate Results.
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900 dark:text-white">
+                            Precision Diagnostics for <br class="hidden lg:block"/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-purple to-medical-violet">Better Healthcare</span> Decisions
+                        </h1>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl" data-aos="fade-up" data-aos-delay="200">
+                            Empowering patients and physicians with highly accurate, reliable, and technology-driven diagnostic testing.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 mb-10" data-aos="fade-up" data-aos-delay="400">
+                            <a href="#contact" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-medical-purple text-white font-medium hover:bg-purple-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                Book a Test
+                            </a>
+                            <a href="#services" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-medical-purple dark:hover:border-medical-lavender font-medium hover:text-medical-purple dark:hover:text-medical-lavender transition-all duration-300">
+                                Explore Tests
+                            </a>
+                        </div>
+
+                        <div class="flex items-center gap-4" data-aos="fade-in" data-aos-delay="600">
+                            <div class="flex -space-x-2">
+                                <img src="https://i.pravatar.cc/100?img=33" alt="Doctor" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover">
+                                <img src="https://i.pravatar.cc/100?img=47" alt="Doctor" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover">
+                                <img src="https://i.pravatar.cc/100?img=12" alt="Doctor" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover">
+                            </div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <span class="text-purple-500 font-bold">â˜… 4.9/5</span> Trusted Diagnostic Excellence
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image & Floating Cards -->
+                    <div class="relative lg:ml-auto w-full max-w-lg mx-auto mt-10 lg:mt-0" data-aos="fade-left" data-aos-duration="1200">
+                        <div class="relative rounded-3xl overflow-hidden shadow-premium aspect-[4/5] lg:aspect-square group">
+                            <!-- Unique Image 1 -->
+                            <img src="https://loremflickr.com/1200/1200/laboratory,medical,equipment?lock=101" alt="Modern Medical Laboratory" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        
+                        <!-- Floating Card 1 -->
+                        <div class="absolute -left-4 md:-left-6 top-10 md:top-20 bg-white dark:bg-medical-carddark p-3 md:p-4 rounded-xl shadow-glass border border-white/20 dark:border-gray-700 backdrop-blur-md animate-float z-20">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-fuchsia-100 dark:bg-fuchsia-900/30 flex items-center justify-center text-fuchsia-600 dark:text-fuchsia-400">
+                                    <i data-lucide="check-circle" class="w-4 h-4 md:w-5 md:h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs md:text-sm font-bold text-gray-900 dark:text-white">99.9% Accuracy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card 2 -->
+                        <div class="absolute -right-4 md:-right-6 bottom-20 md:bottom-32 bg-white dark:bg-medical-carddark p-3 md:p-4 rounded-xl shadow-glass border border-white/20 dark:border-gray-700 backdrop-blur-md animate-float-delayed z-20">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-medical-purple dark:text-medical-lavender">
+                                    <i data-lucide="clock" class="w-4 h-4 md:w-5 md:h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs md:text-sm font-bold text-gray-900 dark:text-white">Fast Results</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Card 3 -->
+                        <div class="absolute left-6 md:left-10 -bottom-4 md:-bottom-6 bg-white dark:bg-medical-carddark px-4 py-2 md:px-5 md:py-3 rounded-xl shadow-glass border border-white/20 dark:border-gray-700 backdrop-blur-md animate-float z-20">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="shield-check" class="w-4 h-4 md:w-5 md:h-5 text-medical-violet"></i>
+                                <span class="text-xs md:text-sm font-bold text-gray-900 dark:text-white">Certified Laboratory</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-white dark:bg-medical-bgdark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Asymmetric Image Layout -->
+                    <div class="relative w-full h-[600px] hidden md:block">
+                        <!-- Main Image -->
+                        <div class="absolute top-0 right-0 w-4/5 h-4/5 rounded-3xl overflow-hidden shadow-2xl z-10" data-aos="zoom-in" data-aos-duration="1000">
+                             <!-- Unique Image 2 -->
+                            <img src="https://loremflickr.com/1000/1200/microscope,technician?lock=102" alt="Laboratory Technician" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Supporting Image -->
+                        <div class="absolute bottom-0 left-0 w-3/5 h-2/5 rounded-3xl overflow-hidden shadow-xl z-20 border-8 border-white dark:border-gray-700" data-aos="fade-right" data-aos-delay="300">
+                             <!-- Unique Image 3 -->
+                            <img src="https://loremflickr.com/800/600/blood,vials?lock=103" alt="Blood Vials" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Mobile simplified image -->
+                    <div class="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl md:hidden mb-10" data-aos="zoom-in">
+                        <img src="https://loremflickr.com/1000/1200/microscope,technician?lock=102" alt="Laboratory Technician" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Content -->
+                    <div data-aos="fade-left" data-aos-duration="1000">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Precision Built Into <span class="text-medical-purple dark:text-medical-lavender">Every Test</span></h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                            At Precision Medical Labs, we combine advanced diagnostic facilities with experienced professionals to deliver insights you can trust.
+                        </p>
+
+                        <!-- Statistics Counter Animation -->
+                        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-100 dark:border-gray-800" id="stats-container">
+                            <div class="text-left" data-aos="fade-up" data-aos-delay="100">
+                                <div class="text-3xl font-bold text-medical-purple dark:text-medical-lavender mb-1"><span class="counter" data-target="15">0</span>+</div>
+                                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Years Exp.</div>
+                            </div>
+                            <div class="text-left" data-aos="fade-up" data-aos-delay="200">
+                                <div class="text-3xl font-bold text-medical-purple dark:text-medical-lavender mb-1"><span class="counter" data-target="250">0</span>+</div>
+                                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Tests</div>
+                            </div>
+                            <div class="text-left" data-aos="fade-up" data-aos-delay="300">
+                                <div class="text-3xl font-bold text-medical-purple dark:text-medical-lavender mb-1">99.9%</div>
+                                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Accuracy</div>
+                            </div>
+                            <div class="text-left" data-aos="fade-up" data-aos-delay="400">
+                                <div class="text-3xl font-bold text-medical-purple dark:text-medical-lavender mb-1"><span class="counter" data-target="50">0</span>K+</div>
+                                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Patients</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-gray-50 dark:bg-medical-carddark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Comprehensive <span class="text-medical-violet">Diagnostic Testing</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="services-grid">
+                    <!-- Cards will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Technology Section -->
+        <section id="technology" class="py-24 bg-white dark:bg-medical-bgdark overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-down">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Powered by <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-purple to-purple-600">Advanced Technology</span></h2>
+                </div>
+
+                <div class="relative w-full max-w-5xl mx-auto h-auto md:h-[600px] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-0">
+                    <!-- Central Image -->
+                    <div class="relative md:absolute w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 z-10" data-aos="zoom-in" data-aos-duration="1000">
+                        <img src="https://loremflickr.com/1000/1000/technology,medical?lock=104" alt="Advanced Tech Analyzer" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Orbiting Cards Desktop -->
+                    <div class="hidden md:block absolute w-full h-full pointer-events-none">
+                        <div class="absolute top-1/4 left-0 bg-white dark:bg-medical-carddark p-4 rounded-xl shadow-premium border border-gray-100 dark:border-gray-800 w-64 transform -translate-y-1/2 pointer-events-auto" data-aos="fade-right">
+                            <div class="flex items-center gap-3 mb-2"><i data-lucide="cpu" class="w-5 h-5 text-medical-purple"></i><h4 class="font-bold text-gray-900 dark:text-white">Automated Analyzers</h4></div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">High-throughput systems for error-free sample processing.</p>
+                        </div>
+                        <div class="absolute top-1/4 right-0 bg-white dark:bg-medical-carddark p-4 rounded-xl shadow-premium border border-gray-100 dark:border-gray-800 w-64 transform -translate-y-1/2 pointer-events-auto" data-aos="fade-left">
+                            <div class="flex items-center gap-3 mb-2"><i data-lucide="monitor" class="w-5 h-5 text-purple-600"></i><h4 class="font-bold text-gray-900 dark:text-white">Digital Pathology</h4></div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">High-resolution scanning for detailed cellular analysis.</p>
+                        </div>
+                        <div class="absolute bottom-1/4 left-10 bg-white dark:bg-medical-carddark p-4 rounded-xl shadow-premium border border-gray-100 dark:border-gray-800 w-64 transform translate-y-1/2 pointer-events-auto" data-aos="fade-up-right">
+                            <div class="flex items-center gap-3 mb-2"><i data-lucide="network" class="w-5 h-5 text-medical-violet"></i><h4 class="font-bold text-gray-900 dark:text-white">AI-Assisted Analysis</h4></div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">Artificial intelligence aiding in anomaly detection.</p>
+                        </div>
+                        <div class="absolute bottom-1/4 right-10 bg-white dark:bg-medical-carddark p-4 rounded-xl shadow-premium border border-gray-100 dark:border-gray-800 w-64 transform translate-y-1/2 pointer-events-auto" data-aos="fade-up-left">
+                            <div class="flex items-center gap-3 mb-2"><i data-lucide="shield" class="w-5 h-5 text-fuchsia-600"></i><h4 class="font-bold text-gray-900 dark:text-white">Quality Monitoring</h4></div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">Real-time calibration and system health checks.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden w-full">
+                        <div class="bg-gray-50 dark:bg-medical-carddark p-5 rounded-xl border border-gray-100 dark:border-gray-800" data-aos="fade-up">
+                            <h4 class="font-bold text-gray-900 dark:text-white mb-2">Automated Analyzers</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">High-throughput systems.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-medical-carddark p-5 rounded-xl border border-gray-100 dark:border-gray-800" data-aos="fade-up">
+                            <h4 class="font-bold text-gray-900 dark:text-white mb-2">Digital Pathology</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">High-resolution scanning.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-medical-carddark p-5 rounded-xl border border-gray-100 dark:border-gray-800" data-aos="fade-up">
+                            <h4 class="font-bold text-gray-900 dark:text-white mb-2">AI-Assisted Analysis</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">AI anomaly detection.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-medical-carddark p-5 rounded-xl border border-gray-100 dark:border-gray-800" data-aos="fade-up">
+                            <h4 class="font-bold text-gray-900 dark:text-white mb-2">Quality Monitoring</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Real-time calibration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section id="why-us" class="py-24 bg-medical-plum text-white overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-12" data-aos="fade-right">Why Patients Choose <span class="text-medical-lavender">Precision</span></h2>
+                        <div class="relative border-l border-medical-purple/30 pl-8 space-y-10">
+                            
+                            <div class="relative" data-aos="fade-up" data-aos-delay="100">
+                                <div class="absolute -left-[39px] top-1 w-4 h-4 rounded-full bg-medical-lavender shadow-[0_0_10px_rgba(224,242,254,0.7)]"></div>
+                                <h3 class="text-xl font-bold mb-2">High Accuracy</h3>
+                                <p class="text-gray-400">Stringent protocols and multiple validation layers.</p>
+                            </div>
+                            
+                            <div class="relative" data-aos="fade-up" data-aos-delay="200">
+                                <div class="absolute -left-[39px] top-1 w-4 h-4 rounded-full bg-medical-lavender shadow-[0_0_10px_rgba(224,242,254,0.7)]"></div>
+                                <h3 class="text-xl font-bold mb-2">Fast Turnaround</h3>
+                                <p class="text-gray-400">Routine test results delivered securely within 12 hours.</p>
+                            </div>
+
+                            <div class="relative" data-aos="fade-up" data-aos-delay="300">
+                                <div class="absolute -left-[39px] top-1 w-4 h-4 rounded-full bg-medical-lavender shadow-[0_0_10px_rgba(224,242,254,0.7)]"></div>
+                                <h3 class="text-xl font-bold mb-2">Certified Professionals</h3>
+                                <p class="text-gray-400">Board-certified pathologists and scientists.</p>
+                            </div>
+
+                            <div class="relative" data-aos="fade-up" data-aos-delay="400">
+                                <div class="absolute -left-[39px] top-1 w-4 h-4 rounded-full bg-medical-lavender shadow-[0_0_10px_rgba(224,242,254,0.7)]"></div>
+                                <h3 class="text-xl font-bold mb-2">Secure Reports</h3>
+                                <p class="text-gray-400">Bank-level encryption secures your digital reports.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 h-[500px]" data-aos="fade-left" data-aos-duration="1200">
+                        <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative">
+                            <img src="https://loremflickr.com/800/1000/laboratory,doctor?lock=12" alt="Professional Doctor" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="py-24 bg-gray-50 dark:bg-medical-carddark relative border-b border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Simple Process, <span class="text-medical-purple dark:text-medical-lavender">Accurate Results</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                    <div class="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gray-300 dark:bg-gray-700 mx-auto -z-0"></div>
+
+                    <div class="relative text-center bg-white dark:bg-medical-bgdark p-6 rounded-2xl shadow-sm md:bg-transparent md:shadow-none md:p-0 z-10" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-24 h-24 mx-auto bg-white dark:bg-medical-bgdark rounded-full shadow-lg flex items-center justify-center border-4 border-gray-50 dark:border-medical-carddark relative z-10 mb-6">
+                            <i data-lucide="calendar" class="w-10 h-10 text-medical-purple dark:text-medical-lavender"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Step 1</h3>
+                        <p class="font-medium text-medical-purple dark:text-medical-lavender mb-2">Book Your Test</p>
+                    </div>
+
+                    <div class="relative text-center bg-white dark:bg-medical-bgdark p-6 rounded-2xl shadow-sm md:bg-transparent md:shadow-none md:p-0 z-10" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-24 h-24 mx-auto bg-white dark:bg-medical-bgdark rounded-full shadow-lg flex items-center justify-center border-4 border-gray-50 dark:border-medical-carddark relative z-10 mb-6">
+                            <i data-lucide="map-pin" class="w-10 h-10 text-medical-purple dark:text-medical-lavender"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Step 2</h3>
+                        <p class="font-medium text-medical-purple dark:text-medical-lavender mb-2">Visit Laboratory</p>
+                    </div>
+
+                    <div class="relative text-center bg-white dark:bg-medical-bgdark p-6 rounded-2xl shadow-sm md:bg-transparent md:shadow-none md:p-0 z-10" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-24 h-24 mx-auto bg-white dark:bg-medical-bgdark rounded-full shadow-lg flex items-center justify-center border-4 border-gray-50 dark:border-medical-carddark relative z-10 mb-6">
+                            <i data-lucide="test-tube" class="w-10 h-10 text-medical-purple dark:text-medical-lavender"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Step 3</h3>
+                        <p class="font-medium text-medical-purple dark:text-medical-lavender mb-2">Sample Collection</p>
+                    </div>
+
+                    <div class="relative text-center bg-white dark:bg-medical-bgdark p-6 rounded-2xl shadow-sm md:bg-transparent md:shadow-none md:p-0 z-10" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-24 h-24 mx-auto bg-white dark:bg-medical-bgdark rounded-full shadow-lg flex items-center justify-center border-4 border-gray-50 dark:border-medical-carddark relative z-10 mb-6">
+                            <i data-lucide="file-check-2" class="w-10 h-10 text-medical-purple dark:text-medical-lavender"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Step 4</h3>
+                        <p class="font-medium text-medical-purple dark:text-medical-lavender mb-2">Receive Results</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Experience / Testimonials -->
+        <section class="py-24 relative overflow-hidden bg-white dark:bg-medical-bgdark">
+            <div class="absolute inset-0 z-0 opacity-5 dark:opacity-10 pointer-events-none">
+                <img src="https://loremflickr.com/1920/1080/abstract,medical?lock=106" alt="Abstract Pattern" class="w-full h-full object-cover">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Trusted by Patients.<br><span class="text-medical-violet">Driven by Precision.</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Cards via JS or hardcoded -->
+                    <div class="bg-gray-50 dark:bg-medical-carddark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800" data-aos="slide-up" data-aos-delay="100">
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 italic">"The facility is extremely clean, and the staff is professional. Highly recommended."</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="Sarah J." class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <div><h4 class="font-bold text-gray-900 dark:text-white text-sm">Sarah Jenkins</h4><p class="text-xs text-gray-500">Wellness Package</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-medical-carddark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800" data-aos="slide-up" data-aos-delay="200">
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 italic">"Drawing blood usually makes me nervous, but the experience was painless and quick."</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Michael T." class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <div><h4 class="font-bold text-gray-900 dark:text-white text-sm">Michael Torres</h4><p class="text-xs text-gray-500">Advanced Executive</p></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-medical-carddark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800" data-aos="slide-up" data-aos-delay="300">
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 italic">"Appreciate the seamless digital integration. Getting reports directly to my phone is great."</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Emma W." class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <div><h4 class="font-bold text-gray-900 dark:text-white text-sm">Emma Watson</h4><p class="text-xs text-gray-500">Thyroid Profile</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Packages Section -->
+        <section class="py-24 bg-medical-lavender/10 dark:bg-medical-bgdark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-down">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Preventive <span class="text-medical-purple dark:text-medical-lavender">Health Packages</span></h2>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8 items-center">
+                    <!-- Package 1 -->
+                    <div class="bg-white dark:bg-medical-carddark rounded-3xl p-8 border border-gray-100 dark:border-gray-800" data-aos="fade-up">
+                        <div class="inline-block px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-bold mb-4">ESSENTIAL</div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Health Check</h3>
+                        <ul class="space-y-4 mb-8 mt-6">
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> CBC</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> Blood Sugar</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> Lipid Profile</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> Liver Function Test</li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 px-4 bg-gray-50 dark:bg-gray-800 text-center rounded-xl font-medium border border-gray-200 dark:border-gray-700">Book Now</a>
+                    </div>
+                    
+                    <!-- Package 2 -->
+                    <div class="bg-gradient-to-b from-medical-purple to-medical-plum rounded-3xl p-8 shadow-xl text-white transform lg:-translate-y-4" data-aos="zoom-in">
+                        <div class="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold mb-4">COMPREHENSIVE</div>
+                        <h3 class="text-2xl font-bold mb-2">Complete Wellness</h3>
+                        <ul class="space-y-4 mb-8 mt-6">
+                            <li class="flex gap-3 text-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-medical-lavender shrink-0"></i> All Essential Tests</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-medical-lavender shrink-0"></i> Kidney Function Test</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-medical-lavender shrink-0"></i> Thyroid Profile</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-medical-lavender shrink-0"></i> Vitamin D & B12</li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 px-4 bg-medical-lavender text-medical-plum font-bold text-center rounded-xl">Book Package</a>
+                    </div>
+
+                    <!-- Package 3 -->
+                    <div class="bg-white dark:bg-medical-carddark rounded-3xl p-8 border border-gray-100 dark:border-gray-800" data-aos="fade-up">
+                        <div class="inline-block px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-bold mb-4">EXECUTIVE</div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Advanced Care</h3>
+                        <ul class="space-y-4 mb-8 mt-6">
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> All Complete Wellness Tests</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> Cardiac Risk Markers</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> Diabetes Screening</li>
+                            <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-medical-violet shrink-0"></i> Complete Hormone Profile</li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 px-4 bg-gray-50 dark:bg-gray-800 text-center rounded-xl font-medium border border-gray-200 dark:border-gray-700">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Reports UI Mockup Section -->
+        <section class="py-24 bg-white dark:bg-medical-carddark overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div data-aos="fade-right">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Your Reports, <br><span class="text-medical-purple dark:text-medical-lavender">Available When You Need Them</span></h2>
+                        <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">Access diagnostic reports securely from anywhere, share them with your physician instantly.</p>
+                    </div>
+
+                    <div class="relative" data-aos="fade-left">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl relative">
+                            <img src="https://loremflickr.com/1000/800/doctor,computer?lock=107" alt="Digital Reports" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-50 dark:bg-medical-bgdark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Form -->
+                    <div class="bg-white dark:bg-medical-carddark p-8 md:p-10 rounded-3xl shadow-premium" data-aos="fade-right">
+                        <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Ready to Get Tested?</h2>
+                        <form id="booking-form" class="space-y-5" novalidate>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <input type="text" id="name" placeholder="Full Name *" required class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-transparent outline-none">
+                                </div>
+                                <div>
+                                    <input type="tel" id="phone" placeholder="Phone Number *" required class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-transparent outline-none">
+                                </div>
+                            </div>
+                            <div>
+                                <input type="email" id="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-transparent outline-none">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <input type="date" id="date" required class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-transparent outline-none text-gray-500">
+                                </div>
+                                <div>
+                                    <select id="service" required class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-transparent outline-none">
+                                        <option value="" disabled selected>Select Test / Package *</option>
+                                        <option value="cbc">Complete Blood Count</option>
+                                        <option value="pkg">Health Package</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full py-4 rounded-xl bg-medical-purple text-white font-bold hover:bg-purple-700 transition-all">
+                                Confirm Booking
+                            </button>
+                            <div id="form-success" class="hidden mt-4 p-4 bg-fuchsia-50 text-fuchsia-700 rounded-xl text-center">Booking received!</div>
+                        </form>
+                    </div>
+
+                    <div class="flex flex-col justify-between h-full" data-aos="fade-left">
+                        <div class="mb-8 rounded-3xl overflow-hidden shadow-xl h-64 w-full relative">
+                            <img src="https://loremflickr.com/1600/900/reception,clinic?lock=108" alt="Laboratory Reception" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-white dark:bg-medical-carddark p-8 rounded-3xl shadow-premium space-y-6 flex-grow">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Contact Information</h3>
+                                <p class="text-gray-500 dark:text-gray-400">Reach out to us directly for any inquiries.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 text-gray-700 dark:text-gray-300">
+                                    <div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-gray-800 flex items-center justify-center text-medical-purple">
+                                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                    </div>
+                                    <span>123 Precision Way, New York, NY 10001</span>
+                                </div>
+                                <div class="flex items-center gap-4 text-gray-700 dark:text-gray-300">
+                                    <div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-gray-800 flex items-center justify-center text-medical-purple">
+                                        <i data-lucide="phone" class="w-5 h-5"></i>
+                                    </div>
+                                    <span>+1 (800) 555-0199</span>
+                                </div>
+                                <div class="flex items-center gap-4 text-gray-700 dark:text-gray-300">
+                                    <div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-gray-800 flex items-center justify-center text-medical-purple">
+                                        <i data-lucide="mail" class="w-5 h-5"></i>
+                                    </div>
+                                    <span>contact@precisionlabs.com</span>
+                                </div>
+                                <div class="flex items-center gap-4 text-gray-700 dark:text-gray-300">
+                                    <div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-gray-800 flex items-center justify-center text-medical-purple">
+                                        <i data-lucide="clock" class="w-5 h-5"></i>
+                                    </div>
+                                    <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="w-full h-[400px] relative mt-16" data-aos="fade-up">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25280010994!2d-74.14448744155169!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out dark:opacity-60 dark:invert-[0.9] dark:hue-rotate-180 dark:hover:invert-0 dark:hover:hue-rotate-0"></iframe>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-medical-carddark text-gray-600 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="#home" class="inline-flex items-center gap-3 group mb-4" aria-label="Home">
+                        <div class="w-10 h-10 rounded-lg bg-medical-purple flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                            <i data-lucide="activity" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-bold text-xl text-gray-900 dark:text-white">Precision Labs</span>
+                    </a>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2 mb-6">Delivering absolute precision in diagnostic testing.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-medical-accent hover:-translate-y-1 transition-all duration-300" aria-label="Facebook">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-medical-accent hover:-translate-y-1 transition-all duration-300" aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-medical-accent hover:-translate-y-1 transition-all duration-300" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-medical-accent hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-sm hover:text-medical-lavender">Home</a></li>
+                        <li><a href="#about" class="text-sm hover:text-medical-lavender">About</a></li>
+                        <li><a href="#services" class="text-sm hover:text-medical-lavender">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm hover:text-medical-lavender">Blood Tests</a></li>
+                        <li><a href="#" class="text-sm hover:text-medical-lavender">Preventive Health</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-4">Contact Info</h4>
+                    <p class="text-sm mb-2">123 Precision Way, NY 10001</p>
+                    <p class="text-sm mb-2">+1 (800) 555-0199</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 dark:text-gray-400">
+                <div>&copy; 2026 Precision Medical Labs. All rights reserved.</div>
+
+                <a href="#home" class="p-2.5 bg-gray-800 hover:bg-medical-purple rounded-full text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1" aria-label="Back to Top">
+                    <i data-lucide="arrow-up" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
+
