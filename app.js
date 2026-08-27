@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Active Navigation Highlight & Header Scroll Effect
     const header = document.getElementById('header');
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
     window.addEventListener('scroll', () => {
         let current = '';
@@ -144,13 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const colors = colorMap[service.color] || colorMap.blue;
 
             html += `
-            <div class="service-card group bg-white dark:bg-medical-bgdark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-premium hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" data-aos="${service.anim}" data-aos-delay="${service.delay}">
+            <div class="service-card group h-full flex flex-col bg-white dark:bg-medical-bgdark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-premium hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" data-aos="${service.anim}" data-aos-delay="${service.delay}">
                 <div class="w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center ${colors.text} mb-5 group-hover:scale-110 transition-transform relative z-10">
                     <i data-lucide="${service.icon}" class="w-6 h-6"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 relative z-10">${service.title}</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 relative z-10">${service.desc}</p>
-                <a href="#contact" class="inline-flex items-center text-sm font-medium text-medical-purple dark:text-medical-lavender hover:text-medical-violet transition-colors relative z-10 group/link">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 relative z-10 flex-grow">${service.desc}</p>
+                <a href="#contact" class="inline-flex items-center text-sm font-medium text-medical-purple dark:text-medical-lavender hover:text-medical-violet transition-colors relative z-10 group/link mt-auto">
                     Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
                 </a>
             </div>

@@ -73,6 +73,15 @@ html, body {
     width: 100%;
 }
 
+/* Mobile Navigation Active State */
+.mobile-nav-link.active:not(.bg-medical-purple) {
+    color: #6D28A8;
+    font-weight: 700;
+}
+.dark .mobile-nav-link.active:not(.bg-medical-purple) {
+    color: #F3E8FF;
+}
+
 /* Glassmorphism */
 .glass-card {
     background: rgba(255, 255, 255, 0.7);
