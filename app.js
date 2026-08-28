@@ -49,18 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
+            
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }, 50);
+                }
+            }
         });
     });
 
     // Active Navigation Highlight & Header Scroll Effect
     const header = document.getElementById('header');
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section, header');
     const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
-    window.addEventListener('scroll', () => {
+    const updateActiveLink = () => {
         let current = '';
         const scrollY = window.pageYOffset;
 
@@ -79,13 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Fallback for the very top
+        if (scrollY < 50) current = 'home';
+
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
+            const href = link.getAttribute('href');
+            if (href && href.substring(1) === current) {
                 link.classList.add('active');
             }
         });
-    });
+    };
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); // Call once on load
 
     // Statistics Counter Animation
     const statsContainer = document.getElementById('stats-container');
